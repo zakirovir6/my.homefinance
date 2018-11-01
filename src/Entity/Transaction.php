@@ -56,7 +56,7 @@ class Transaction
         return $this->id;
     }
 
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -66,7 +66,7 @@ class Transaction
         $this->amount = $amount;
     }
 
-    public function getDirection(): int
+    public function getDirection(): ?int
     {
         return $this->direction;
     }
@@ -94,17 +94,15 @@ class Transaction
         return $this->transactionFiles;
     }
 
-    public function addTransactionFile(TransactionFile $transactionFile): self
+    public function addTransactionFile(TransactionFile $transactionFile): void
     {
         if (!$this->transactionFiles->contains($transactionFile)) {
             $this->transactionFiles[] = $transactionFile;
             $transactionFile->setTransaction($this);
         }
-
-        return $this;
     }
 
-    public function removeTransactionFile(TransactionFile $transactionFile): self
+    public function removeTransactionFile(TransactionFile $transactionFile): void
     {
         if ($this->transactionFiles->contains($transactionFile)) {
             $this->transactionFiles->removeElement($transactionFile);
@@ -113,7 +111,5 @@ class Transaction
                 $transactionFile->setTransaction(null);
             }
         }
-
-        return $this;
     }
 }
