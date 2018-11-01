@@ -46,6 +46,12 @@ class Transaction
      */
     private $transactionFiles;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="transactions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->transactionFiles = new ArrayCollection();
@@ -111,5 +117,15 @@ class Transaction
                 $transactionFile->setTransaction(null);
             }
         }
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
     }
 }
