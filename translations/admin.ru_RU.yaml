@@ -1,0 +1,9 @@
+form:
+    label_amount: Сумма
+    label_direction: Направление
+    label_comment: Комментарий
+
+dictionary:
+    direction:
+        direction_in: Приход
+        direction_out: Расход
