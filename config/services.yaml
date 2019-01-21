@@ -8,6 +8,8 @@ parameters:
 
 imports:
     - { resource: services/sonata.yaml }
+    - { resource: services/repositories.yaml }
+    - { resource: services/security.yaml }
 
 services:
     # default configuration for services in *this* file
@@ -22,7 +24,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Security,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
